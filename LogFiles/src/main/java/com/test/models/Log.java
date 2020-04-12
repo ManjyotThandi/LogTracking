@@ -18,30 +18,29 @@ import javax.persistence.Table;
 public class Log {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-	@Column(name="user_id")
-	private String userId;
-	
-	@Column(name="session_id")
-	private String sessionId;
-	
-//	@ManyToOne
-//	private action actions;
 
-	@OneToMany(cascade=CascadeType.ALL)
+	@Column(name = "user_id")
+	private String userId;
+
+	@Column(name = "session_id")
+	private String sessionId;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="id")
 	private List<action> actions;
-	
+
 	public Log() {
 		super();
 	}
 
-	public Log(String userId,String sessionID, action actionID) {
+	public Log(int id, String userId, String sessionId, List<action> actions) {
 		super();
+		this.id = id;
 		this.userId = userId;
-		this.sessionId = sessionID;
-		this.actions = (List<action>) actionID;
+		this.sessionId = sessionId;
+		this.actions = actions;
 	}
 
 	public String getUserId() {
@@ -73,6 +72,14 @@ public class Log {
 		return "Log [id=" + id + ", userId=" + userId + ", sessionId=" + sessionId + ", actions=" + actions + "]";
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 //	public action getActionId() {
 //		return actions;
 //	}
@@ -80,8 +87,5 @@ public class Log {
 //	public void setActionId(action actionID) {
 //		this.actions = actionID;
 //	}
-
-	
-	
 
 }

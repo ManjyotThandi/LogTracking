@@ -20,23 +20,30 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class action {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int actionID;
 	private Instant time;
 	private String type;
-	@ManyToOne(cascade=CascadeType.ALL)
+	private int id;
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "propertyID")
 	private property properties;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Log log;
 
 	public action() {
 		super();
 	}
 
-	public action(Instant time, String type, com.test.models.property property) {
+	public action(int actionID, Instant time, String type, property properties, Log log) {
 		super();
+		this.actionID = actionID;
 		this.time = time;
 		this.type = type;
-		this.properties = (com.test.models.property) property;
+		this.properties = properties;
+		this.log = log;
 	}
 
 	public int getActionID() {
@@ -70,14 +77,32 @@ public class action {
 	public void setProperties(property property) {
 		this.properties = property;
 	}
+
+	public Log getLog() {
+		return log;
+	}
+
+	public void setLog(Log log) {
+		this.log = log;
+	}
 	
 	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	@Override
 	public String toString() {
 		return "action [actionID=" + actionID + ", time=" + time + ", type=" + type + ", properties=" + properties
-				+ "]";
+				+ ", log=" + log + "]";
 	}
+
+	
 
 //	public List<property> getProperties() {
 //		return properties;
