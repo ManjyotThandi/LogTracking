@@ -1,6 +1,7 @@
 package com.test.models;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,7 +23,7 @@ public class action {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int actionID;
-	private Instant time;
+	private Date time;
 	private String type;
 	private int id;
 
@@ -37,7 +38,7 @@ public class action {
 		super();
 	}
 
-	public action(int actionID, Instant time, String type, property properties, Log log) {
+	public action(int actionID, Date time, String type, property properties, Log log) {
 		super();
 		this.actionID = actionID;
 		this.time = time;
@@ -54,11 +55,11 @@ public class action {
 		this.actionID = actionID;
 	}
 
-	public Instant getTime() {
+	public Date getTime() {
 		return time;
 	}
 
-	public void setTime(Instant time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 
@@ -86,8 +87,6 @@ public class action {
 		this.log = log;
 	}
 	
-	
-
 	public int getId() {
 		return id;
 	}
