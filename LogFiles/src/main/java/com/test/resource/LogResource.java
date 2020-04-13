@@ -26,7 +26,7 @@ import com.test.repository.ActionRepository;
 import com.test.repository.LogRepository;
 
 @RestController
-@RequestMapping("/rest/users")
+//@RequestMapping("/rest/users")
 public class LogResource {
 	@Autowired
 	LogRepository logrepository;
