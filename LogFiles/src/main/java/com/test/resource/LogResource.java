@@ -33,7 +33,7 @@ public class LogResource {
 	@Autowired
 	ActionRepository actionRepository;
 
-	@GetMapping("/all")
+	@GetMapping("/")
 	public List<Log> getAll() {
 		System.out.println("here");
 		// return logrepository.findAll();
